@@ -1,0 +1,26 @@
+<div class="container">
+  <form class="form" (ngSubmit)="addBook()">
+    <input type="text" class="input-lg" placeholder="Ttile" [(ngModel)]="this.title" name="title">      
+    <input type="text" class="input-lg" placeholder="Quantity" [(ngModel)]="this.quantity" name="quantity">      
+    <input type="text" readonly class="input-lg" placeholder="Available" [(ngModel)]="this.quantity" name="available"> 
+    <input type="text" class="input-lg" placeholder="Description" [(ngModel)]="this.description" name="description">       
+    <div class="form-group">
+      <label class="sr-only" for="imagepicker">Image</label>
+      <input type="file" (change)="onFileSelected($event)" id="imagepicker" name="imagepicker">
+    </div>
+   
+    <select class="form-control" id="sel1" [(ngModel)]="this.authorid" name="selectAuthor" > 
+        <option *ngFor="let author of this.authors"[ngValue]="author.id" >{{author.name}}</option>
+      </select>
+      <select class="form-control" id="sel1" [(ngModel)]="this.genreid" name="selectGenre" > 
+        <option *ngFor="let genre of this.genres"[ngValue]="genre.id" >{{genre.name}}</option>
+      </select>
+    <button type="submit">Add Book</button>
+  </form>
+
+  <br>
+
+  <div *ngIf="this.message" class="container bg-inverse" style="opacity:0.8">
+    <h2 style="color:crimson"> <i class="fa fa-times-circle"></i> Add book failed. {{this.message}} </h2>
+  </div>
+</div>

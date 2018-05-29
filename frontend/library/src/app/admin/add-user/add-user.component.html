@@ -1,0 +1,19 @@
+<div class="container">
+  <form class="form" (ngSubmit)="addUser()">
+    <input type="text" class="input-lg" placeholder="Name" [(ngModel)]="this.name" name="name">      
+    <input type="text" class="input-lg" placeholder="Username" [(ngModel)]="this.username" name="usernmae">      
+    <input type="text" class="input-lg" placeholder="Email" [(ngModel)]="this.email" name="email"> 
+    <input type="text" class="input-lg" placeholder="Address" [(ngModel)]="this.address" name="address">       
+    <input type="password" class="input-lg" placeholder="Password" [(ngModel)]="this.password" name="password">
+    <select class="form-control" id="sel1" [(ngModel)]="this.roleid" name="selectRole" > 
+        <option *ngFor="let role of this.roles"[ngValue]="role.id" >{{role.name}}</option>
+      </select>
+    <button type="submit">Add User</button>
+  </form>
+
+  <br>
+
+  <div *ngIf="this.message" class="container bg-inverse" style="opacity:0.8">
+    <h2 style="color:crimson"> <i class="fa fa-times-circle"></i> Add user failed. {{this.message}} </h2>
+  </div>
+</div>

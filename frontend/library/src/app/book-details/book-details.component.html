@@ -1,0 +1,46 @@
+<div class="container text-left">
+  <div class="row">
+    <div class="col-sm-4">
+      <img *ngIf="this.book!=null" src="http://localhost:8080/api/image/{{book.picture}}"/>
+    </div>
+    <div class="col-sm-8 text-left ">
+        <div class="form-group">
+            <label class="text-white"  for="usr">Title:</label>
+            <input *ngIf="this.book!=null" type="text" value="{{book.title}}"  readonly class="form-control bg-dark text-white" id="usr"/>
+          </div>
+          <div *ngIf="this.book!=null">
+              <div  class="form-group" *ngFor="let author of this.book.authors">
+                  <label class="text-white" for="author">Author:</label>
+                  <input  type="text" class="form-control  bg-dark text-white" id="author" value="{{author.name}}" readonly>
+                </div>
+                <div class="form-group">
+                    <label class="text-white"  for="usr">Description:</label>
+                    <textarea readonly class="form-control bg-dark text-white divScrollDescription " rows="5" id="comment">{{this.book.description}}</textarea>
+                </div>
+                <div class="form-group" *ngIf="this.isAvailable()">
+                    <button  (click)=addHistory() type="button" class="btn btn-dark">Get Book</button>
+                </div>
+                <div class="form-group" *ngIf="!this.isAvailable()">
+                    <input *ngIf="this.book!=null" type="text" value="Unavailable"  readonly class="form-control bg-dark text-white" id="avl"/>
+                  </div>
+          </div>
+          
+         
+    </div> 
+  </div>
+  <br/>
+  <div class="form-group text-white opaque">
+      <label for="comment">Review:</label>
+      <textarea  [(ngModel)]="this.review" class="form-control bg-dark text-white" rows="5" id="comment"></textarea>
+      <button  (click)=addReview() type="button" class="btn btn-dark">Add Review</button>
+
+  </div>
+  <label for="comment">Reviews:</label>
+  <div class="divScroll bg-dark text-white opaque">
+    <div *ngFor="let review of this.reviews">
+        <label class="commentLabel"  for="comment">{{review.user.name}}</label>
+        <textarea readonly class="form-control bg-dark text-white divScrollComment " rows="5" id="comment">{{review.review}}</textarea>
+    </div>
+  </div>
+</div>
+

@@ -1,0 +1,21 @@
+.divScroll{
+    height:300px;
+    overflow-y: scroll;
+}
+.divScrollComment{
+    margin:15px;
+    width:1050px;
+    overflow-y: scroll;
+    overflow-wrap: break-word;
+}
+.commentLabel{
+    margin:15px;
+}
+.divScrollDescription{
+
+    overflow-y: scroll;
+    overflow-wrap: break-word;
+}
+.opaque{
+    opacity: 0.7;
+}

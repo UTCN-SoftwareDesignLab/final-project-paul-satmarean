@@ -1,0 +1,8 @@
+<div class="card bg-dark text-white" style="width: 18rem;" *ngFor="let book of this.books">
+  <img class="card-img-top" src="http://localhost:8080/api/image/{{book.picture}}" alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title">{{book.title}}</h5>
+    <p class="card-text" *ngFor="let author of book.authors">{{author.name}}</p>
+    <a href="/book/{{book.id}}" class="btn btn-primary">Details</a>
+  </div>
+</div>
